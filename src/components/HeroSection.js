@@ -11,12 +11,14 @@ function HeroSection() {
            <p>Bạn còn chờ gì nữa?</p>
            <div className='hero-btns'>
                <Button 
+                    href='sign-up'
                     className='btns' 
                     buttonStyle='btn--outline'
                     buttonSize='btn--large'>
                         Đăng ký
                 </Button>
                 <Button 
+                    href='log-in'
                     className='btns' 
                     buttonStyle='btn--primary'
                     buttonSize='btn--large'>

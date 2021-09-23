@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../../App.css';
-import SignupForm from './signup/SignupForm';
-import SignupFormSuccess from './signup/SignupFormSuccess';
+import LoginForm from './signup/LoginForm';
+import LoginFormSuccess from './signup/LoginFormSuccess';
 
-export default function SignUp() {
-    
+
+export default function Login() {
+
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
     
     const submitForm = () => {
@@ -14,7 +15,7 @@ export default function SignUp() {
     return (
         <>
             <div className='signupPage'>
-                {!formIsSubmitted ? <SignupForm submitForm={submitForm}/> : <SignupFormSuccess />}
+            {!formIsSubmitted ? <LoginForm submitForm={submitForm}/> : <LoginFormSuccess />}
             </div>
         </>
     );

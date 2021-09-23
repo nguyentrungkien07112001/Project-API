@@ -6,6 +6,7 @@ import About from './components/pages/About';
 import SignUp from './components/pages/SignUp';
 import Contact from './components/pages/Contact';
 import Target1 from './components/pages/targets/Target1';
+import Login from './components/pages/Login';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/contact' component={Contact} />
         <Route path='/about' component={About} />
         <Route path='/sign-up' component={SignUp} />
+        <Route path='/log-in' component={Login} />
         
         <Route path='/target-1' component={Target1} />
       </Switch>
