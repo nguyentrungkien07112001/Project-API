@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React, { useState, useEffect} from 'react';
+import LValidation from './LValidation';
 import './SignupForm.css';
-import Validation from './Validation';
 
 const LoginForm = ({submitForm}) => {
     
@@ -21,12 +22,30 @@ const LoginForm = ({submitForm}) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        setErrors(Validation(values));
-        setDataIsCorrect(true);
+        setErrors(LValidation(values));
+        // setDataIsCorrect(true);
+
+        var bodyFormData = new FormData();
+        bodyFormData.append('username', values.username);
+        bodyFormData.append('password', values.passowrd);
+        
+        // const data = {
+        //     username: values.username,
+        //     password: values.password
+        // }
+
+        axios.post('http://localhost:8080/api/v1/login', bodyFormData)
+            .then(res => {
+                console.log(res);
+                setDataIsCorrect(true);
+            }).catch(err => {
+                console.log(err)
+            })
+
     };
 
     useEffect(() =>  {
-        if (Object.keys(errors).length === 2 && dataIsCorrect) {
+        if (Object.keys(errors).length === 0 && dataIsCorrect) {
          submitForm(true);
         }
     }, [errors]);

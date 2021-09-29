@@ -1,10 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './SignupForm.css';
-import useForm from './UseForm';
+import Validation from './Validation';
+import axios from 'axios';
 
 const SignupForm = ( {submitForm} ) => {
     
-    const { handleChange, handleFormSubmit, values, errors } = useForm(submitForm);
+    const [values, setValues] = useState({
+        fullname: "",
+        username: "",
+        email: "",
+        password: "",
+    });
+
+    const [errors, setErrors] = useState({});
+    const[dataIsCorrect, setDataIsCorrect] = useState(false);
+
+    const handleChange = (event) => {
+        setValues({
+            ...values,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        setErrors(Validation(values));
+        setDataIsCorrect(true);
+
+        const data = {
+            fullName: values.fullname,
+            username: values.username,
+            email: values.email,
+            password: values.password,
+        };
+        
+        axios.post('http://localhost:8080/api/v1/registration', data).then(
+            res => {
+                console.log(res);
+            }
+        ).catch(
+            err => {
+                console.log(err);
+            }
+        )
+
+    };
+
+    useEffect(() =>  {
+        if (Object.keys(errors).length === 0 && dataIsCorrect) {
+         submitForm(true);
+        }
+    }, [errors]);
 
     return (
         <div className='container'>
@@ -19,7 +65,7 @@ const SignupForm = ( {submitForm} ) => {
                             className="input" 
                             type="text" 
                             name="fullname"
-                            value={values.fullName}
+                            value={values.fullname}
                             onChange={handleChange}
                         />
                         {errors.fullname && <p className="error">{errors.fullname}</p>}

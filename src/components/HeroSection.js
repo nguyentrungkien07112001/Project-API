@@ -18,7 +18,7 @@ function HeroSection() {
                         Đăng ký
                 </Button>
                 <Button 
-                    href='log-in'
+                    href='login'
                     className='btns' 
                     buttonStyle='btn--primary'
                     buttonSize='btn--large'>

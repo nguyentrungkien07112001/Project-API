@@ -1,8 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import CardItem from './CardItem';
 import './Cards.css';
 
-function Cards() {
+const Cards = () => {
+    
+    // const [targets, setTargets] = useState([]);
+    // const [loading, setLoading] = useState(false);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [targetsPerPage, setTargetsPerPage] = useState(10);
+
+    // useEffect(() => {
+    //     const fetchTargets = async () => {
+    //         setLoading(true); 
+    //         const res = await axios.get('https://614d5930e3cf1f001712d0b7.mockapi.io/api/v1/targets');
+    //         setTargets(res.data);
+    //         setLoading(false)
+    //     }
+
+    //     fetchTargets();
+    // }, []); 
+    
     return (
         <div className='cards'>
             <h1>Những lộ trình đã được tạo</h1>
@@ -23,30 +41,15 @@ function Cards() {
                             label='Sức khỏe'
                             path='muctieudemo2'
                             creator='Admin'
-                            progress='52%'
-                            
+                            progress='52%'                      
                         />
-                        <CardItem 
-                            src='images/pexels-garvin-st-villier-3311574.jpg'
-                            text='Tiết kiệm tiền mua xe mới'
-                            label='Tài chính'
-                            path='muctieudemo3'
-                            creator='Admin'
-                            progress='83%'
-                        />
-                        <CardItem 
-                            src='images/lmht-1550832529125682515233.jpg'
-                            text='Lên rank thách đấu Liên Minh Huyền Thoại'
-                            label='Khác'
-                            path='muctieudemo4'
-                            creator='Admin'
-                            progress='50%'
-                        />
-                    </ul>
+
+                    </ul>                    
                 </div>
             </div>
         </div>
     )
-}
+};
 
 export default Cards;
+

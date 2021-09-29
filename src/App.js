@@ -18,7 +18,7 @@ function App() {
         <Route path='/contact' component={Contact} />
         <Route path='/about' component={About} />
         <Route path='/sign-up' component={SignUp} />
-        <Route path='/log-in' component={Login} />
+        <Route path='/login' component={Login} />
         
         <Route path='/target-1' component={Target1} />
       </Switch>
